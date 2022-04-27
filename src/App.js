@@ -1,6 +1,9 @@
+import React from 'react';
 import './App.css';
 
 const displayEmojiName = event => alert(event.target.id);
+const greeting = "greeting";
+var buttonClicked = false;
 
 //thats an array
 const emojis = [
@@ -18,17 +21,23 @@ const emojis = [
   }
 ]
 
-function App() {
-    const greeting = "greeting";
-  return (
-    <div className="container">
+
+class App extends React.Component {
+  handleClick() {
+    console.log('Button clicked');
+  }
+
+  render() {
+    return(
+      <div className="container">
       <h1 id="greeting">Hello World!</h1>
       <p>Writing a JSX</p>
       <ul>
         {
           emojis.map(emoji => (
             <li key={emoji.name}>
-              <button
+              <button 
+                className="emoji-btn"
                 onClick={displayEmojiName}
               >
                 <span role="img" aria-label={emoji.name} id={emoji.name}>{emoji.emoji}</span>
@@ -36,9 +45,15 @@ function App() {
             </li>
           ))
         }
+      </ul>  
+      <ul>
+        <button 
+          onClick={this.handleClick}>Click me!
+        </button>
       </ul>
     </div>
-  );
+    );
+  }
 }
 
 export default App;

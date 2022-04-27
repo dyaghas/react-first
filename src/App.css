@@ -4,12 +4,24 @@
   align-items: center;
 }
 
-button {
+.emoji-btn {
   font-size: 2em;
   border: 0;
   padding: 0;
   background: none;
   cursor: pointer;
+}
+
+.num-btn {
+  padding: 10px 15px 10px 15px;
+  border: 0;
+  color: white;
+  background-color: #2c94d4;
+  border-radius: 5px;
+}
+
+.num-btn:active {
+  background-color: #206b99;
 }
 
 ul {

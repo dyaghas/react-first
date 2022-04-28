@@ -3,7 +3,6 @@ import './App.css';
 
 const displayEmojiName = event => alert(event.target.id);
 const greeting = "greeting";
-var buttonClicked = false;
 
 //thats an array
 const emojis = [
@@ -23,8 +22,17 @@ const emojis = [
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {buttonClicked: false};
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleClick() {
-    console.log('Button clicked');
+    this.setState(prevState => ({
+      buttonClicked: !prevState.buttonClicked
+    }));
   }
 
   render() {
@@ -32,6 +40,7 @@ class App extends React.Component {
       <div className="container">
       <h1 id="greeting">Hello World!</h1>
       <p>Writing a JSX</p>
+
       <ul>
         {
           emojis.map(emoji => (
@@ -45,12 +54,20 @@ class App extends React.Component {
             </li>
           ))
         }
-      </ul>  
+      </ul>
+
+      <ul>
+        {this.state.buttonClicked ? "clicked" : null}
+      </ul> 
+
       <ul>
         <button 
-          onClick={this.handleClick}>Click me!
+          onClick={this.handleClick}
+        >
+          Click me
         </button>
       </ul>
+      
     </div>
     );
   }
